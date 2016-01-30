@@ -1,0 +1,19 @@
+/* Empty. Add your own CSS if you like */
+.background-color-yellow{
+  background-color: rgb(233, 178, 15) !important;
+}
+.title{
+  font-weight: 400 !important;
+}
+.flex-calendar .month{
+  background-color: rgb(233, 178, 15) !important;
+}
+.flex-calendar .week{
+  background-color: #ffb835 !important;
+}
+.flex-calendar .month .arrow, .flex-calendar .month .label{
+  text-align: center !important;
+}
+.bar .title.title-left{
+  text-align : center !important;
+}

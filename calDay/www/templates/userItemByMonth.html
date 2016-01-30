@@ -1,0 +1,19 @@
+<ion-view view-title="Items">
+  <ion-nav-buttons side="left">
+    <i class="icon ion-navicon font-size-x-large margin-left-4px margin-top-4px width-12percent" ng-click="toggleLeft()"></i>
+  </ion-nav-buttons>
+  <ion-content class="padding">
+    <h4 ng-show="showError">No Products Found</h4>
+    <h4 ng-hide="showError">Products List By Date</h4>
+    <div ng-hide="showError">
+      <h5 class="">Total : <span class="margin-right-4percent float-right">Rs {{grandTotal}}</span></h5>
+    </div>
+    <ul class="">
+      <li class="display-webkit-box border-solid border-color-grey border-width" ng-repeat="productTotal in productsTotal" ng-click="goToItemByDate(productTotal)">
+        <span class="col col-10">{{productTotal.date}}</span>
+        <p class="col col-60">{{monthArray[$index]}}</p>
+        <p class="col col-offset-10">Rs {{productTotal.total}}</p>
+      </li>
+    </ul>
+  </ion-content>
+</ion-view>

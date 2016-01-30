@@ -1,0 +1,112 @@
+<ion-view view-title="Items">
+  <ion-nav-buttons side="left">
+    <i class="icon ion-navicon font-size-x-large margin-left-4px margin-top-4px width-12percent" ng-click="toggleLeft()"></i>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <i class="icon ion-plus font-size-x-large margin-right-8px margin-top-4px" ng-click="openAddProductModal()" ng-show="canEdit"></i>
+  </ion-nav-buttons>
+  <ion-content class="padding">
+    <h4 ng-show="showError">No Products Found</h4>
+    <label ng-hide="showError" class="item item-input">
+      <input type="text" placeholder="Search Product" ng-model="search">
+    </label>
+    <h4 ng-hide="showError">Products List</h4>
+    <div ng-hide="showError">
+      <h5 class="">Total : <span class="margin-right-11percent float-right">Rs {{productsTotal}}</span></h5>
+    </div>
+    <ul class="">
+      <li class="display-webkit-box border-solid border-color-grey border-width" ng-repeat="product in products | filter:search" ng-click="setProductForModal(product)">
+        <span class="col col-10">{{$index+1}}</span><p class="col col-66">{{product.productName}}</p><p class="col col-20">Rs {{product.total}}</p>
+      </li>
+    </ul>
+  </ion-content>
+</ion-view>
+
+
+<script id="my-modal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-nav-bar class="background-color-yellow font-weight-400">
+
+      <ion-nav-title class="font-color-white">Add Product</ion-nav-title>
+      <ion-nav-buttons>
+        <div style="width:30px !important;" ng-click="closeAddProductModal()">
+          <i class="icon ion-close font-color-white margin-left-4px font-size-x-large margin-top-4px"></i>
+        </div>
+      </ion-nav-buttons>   </ion-nav-bar>
+    <ion-content class="has-header">
+      <div>
+        <div class="list">
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Product Name</span>
+            <input type="text" ng-model="productObj.productName" placeholder="name">
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label display-webkit-inline-box"><p>Quantity</p>
+            <select  ng-model="blisterPackTemplateSelected" ng-change="changedValue(blisterPackTemplateSelected)"
+                     data-ng-options="blisterPackTemplate as blisterPackTemplate.name for blisterPackTemplate in blisterPackTemplates">
+              <option value="">Quantity Unit</option>
+            </select>
+            </span>
+            <input type="number" ng-model="productObj.quantity" placeholder="0">
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Price Per Unit</span>
+            <input type="number" ng-model="productObj.pricePerUnit" placeholder="0">
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Total</span>
+            <p ng-show="productObj.quantity && productObj.pricePerUnit">{{productObj.quantity * productObj.pricePerUnit}}</p>
+          </label>
+          <div class="row">
+            <div class="text-center">
+              <img class="width-50percent" ng-src="{{productObj.image}}">
+            </div>
+          </div>
+        </div>
+        <div class="padding">
+          <button class="button button-block background-color-yellow font-color-white"  ng-click="saveProduct()">Add</button>
+        </div>
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>
+<script id="my-product.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-nav-bar class="background-color-yellow font-weight-400">
+
+      <ion-nav-title class="font-color-white">My Product</ion-nav-title>
+      <ion-nav-buttons>
+        <div style="width:30px !important;" ng-click="closeMyProductModal()">
+          <i class="icon ion-close font-color-white margin-left-4px font-size-x-large margin-top-4px"></i>
+        </div>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content class="has-header">
+      <div>
+        <div class="list">
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Product Name</span><br>
+            <span class="input-label">{{myProduct.productName}}</span>
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Quantity</span><br>
+            <span class="input-label">{{myProduct.quantity}}{{myProduct.quantityUnit}}</span>
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Price Per Unit</span><br>
+            <span class="input-label">{{myProduct.pricePerUnit}}</span>
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Total</span><br>
+            <span class="input-label">{{myProduct.pricePerUnit * myProduct.quantity}}</span>
+          </label>
+          <div class="row">
+            <div class="text-center">
+              <img  id="myProductModal" class="width-50percent" ng-src="{{myProduct.image}}" ng-show="myProduct.image">
+            </div>
+          </div>
+        </div>
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>

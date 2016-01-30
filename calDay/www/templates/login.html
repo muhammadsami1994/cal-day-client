@@ -1,0 +1,20 @@
+<ion-view view-title="LOGIN">
+  <ion-content class="padding">
+    <div class="list">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">User ID :</span>
+        <input type="text" ng-model="userData.userId" placeholder="abc123">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Password :</span>
+        <input type="password" ng-model="userData.password" placeholder="abc123">
+      </label>
+    </div>
+    <div class="padding">
+      <button class="button button-block background-color-yellow font-color-white" ng-click="login()">Sign In</button>
+    </div>
+    <div class="padding">
+      <button class="button button-block background-color-yellow font-color-white" ui-sref="signUp">Sign Up</button>
+    </div>
+    </ion-content>
+</ion-view>

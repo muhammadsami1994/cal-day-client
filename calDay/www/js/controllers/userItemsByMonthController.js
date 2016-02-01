@@ -2,6 +2,7 @@ app.controller('userItemByMonthCtrl', function($scope,apiService,$state,$statePa
     console.log($stateParams.month);
   $scope.monthArray = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   $scope.month = $scope.monthArray.indexOf($stateParams.month)+1;
+  $scope.selectedMonth = $stateParams.month;
   $scope.userId = apiService.getUser();
   $scope.productsTotal = [];
   $scope.showError = true;

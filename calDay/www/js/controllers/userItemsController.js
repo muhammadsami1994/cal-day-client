@@ -26,7 +26,7 @@ app.controller('userItemCtrl', function($scope,apiService,$state,$stateParams,$i
     $scope.productObj.month = $scope.selectedDate.getMonth()+1;
     $scope.productObj.year = $scope.selectedDate.getFullYear();
     if($scope.selectedDate<$scope.currentDate){
-      $scope.canEdit = false;
+      $scope.canEdit = true;
     }else{
       $scope.canEdit = true;
     }

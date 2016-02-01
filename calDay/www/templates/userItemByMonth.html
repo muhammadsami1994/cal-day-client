@@ -11,7 +11,7 @@
     <ul class="">
       <li class="display-webkit-box border-solid border-color-grey border-width" ng-repeat="productTotal in productsTotal" ng-click="goToItemByDate(productTotal)">
         <span class="col col-10">{{productTotal.date}}</span>
-        <p class="col col-60">{{monthArray[$index]}}</p>
+        <p class="col col-60">{{selectedMonth}}</p>
         <p class="col col-offset-10">Rs {{productTotal.total}}</p>
       </li>
     </ul>
